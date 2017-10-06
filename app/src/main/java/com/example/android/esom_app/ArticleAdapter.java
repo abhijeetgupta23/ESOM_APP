@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.net.URI;
 import java.util.List;
 
 /**
@@ -49,7 +50,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         Article article = articlesList.get(position);
-        holder.pic.setImageResource(article.getPic());
+        holder.pic.setImageBitmap(article.getPic());
         holder.title.setText(article.getTitle());
         holder.category.setText(article.getCategory());
         holder.info.setText(article.getInfo());

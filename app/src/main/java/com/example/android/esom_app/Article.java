@@ -1,16 +1,18 @@
 package com.example.android.esom_app;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by MAHE on 9/22/2017.
  */
 public class Article {
     private String title, category, info,date;
-    private int pic;
+    private Bitmap pic;
 
     public Article() {
     }
 
-    public Article(int pic,String title, String category, String info,String date) {
+    public Article(Bitmap pic, String title, String category, String info, String date) {
         this.pic = pic;
         this.title = title;
         this.category = category;
@@ -18,11 +20,11 @@ public class Article {
         this.date = date;
     }
 
-    public int getPic() {
+    public Bitmap getPic() {
         return pic;
     }
 
-    public void setPic(int pic) {
+    public void setPic(Bitmap pic) {
         this.pic = pic;
     }
 
