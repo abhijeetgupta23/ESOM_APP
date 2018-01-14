@@ -23,9 +23,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
+        <activity
+            android:name=".WebViewActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity android:name="com.example.android.esom_app.MainActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+    </activity>
     </application>
 
 </manifest>

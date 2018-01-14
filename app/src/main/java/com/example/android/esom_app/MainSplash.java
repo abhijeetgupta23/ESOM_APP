@@ -30,7 +30,7 @@ public class MainSplash extends Activity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                Intent i = new Intent(MainSplash.this, MainActivity.class);
+                Intent i = new Intent(com.example.android.esom_app.MainSplash.this, com.example.android.esom_app.MainActivity.class);
                 startActivity(i);
 
                 // close this activity

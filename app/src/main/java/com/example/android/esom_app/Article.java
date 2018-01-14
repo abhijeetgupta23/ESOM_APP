@@ -1,31 +1,37 @@
 package com.example.android.esom_app;
 
-import android.graphics.Bitmap;
-
 /**
  * Created by MAHE on 9/22/2017.
  */
 public class Article {
     private String title, category, info,date;
-    private Bitmap pic;
+    private String pic,link;
 
-    public Article() {
-    }
 
-    public Article(Bitmap pic, String title, String category, String info, String date) {
+
+    public Article(String pic, String title, String category, String info, String date,String link) {
         this.pic = pic;
         this.title = title;
         this.category = category;
         this.info = info;
         this.date = date;
+        this.link=link;
     }
 
-    public Bitmap getPic() {
+    public String getPic() {
         return pic;
     }
 
-    public void setPic(Bitmap pic) {
+    public void setPic(String pic) {
         this.pic = pic;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
 

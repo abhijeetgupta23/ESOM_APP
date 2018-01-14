@@ -1,26 +1,22 @@
 package com.example.android.esom_app;
 
 import android.app.ProgressDialog;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.attr.thumbnail;
-import static android.R.attr.x;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     String url ="http://esom.club/blog";
     ProgressDialog mProgressDialog;
+    Elements imageSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +84,9 @@ public class MainActivity extends AppCompatActivity {
                     // Get the articles
                     articles = document.getElementsByTag("article");
 
+                    //Get all images
+
+
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -98,31 +98,36 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Void result) {
             // Set the articles
 
+//            Log.d("myTag", articles.toString());
 
             for(org.jsoup.nodes.Element x : articles) {
 
-                Elements img = x.getElementsByTag("img[src~=(?i)\\.(png|jpe?g)]");
-                Elements title = x.select("[rel='bookmark']");
-                Elements info = x.select("at-above-post-homepage addthis_tool");
+              //  Log.d("myTag", x.toString());
+                   Elements category = x.select("[rel='category tag']");
+                    Elements img = x.select("img[src~=(?i)\\.(png|jpe?g)]");
+                    Elements title = x.select("[rel='bookmark']");
+                    Elements info = x.select(".entry-excerpt");
+                    String link =  title.attr("href");;
+                    Log.d("link", link);
+                    String imgSrc = img.attr("src");
+                    Log.d("myTag", imgSrc);
 
-               String imgSrc = img.attr("src");
-
-                // Download image from URL
+                       /* Download image from URL
                 InputStream input = null;
                 try {
                     input = new java.net.URL(imgSrc).openStream();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                } */
 
-                // Decode Bitmap
-                Bitmap bitmap = BitmapFactory.decodeStream(input);
+                    // Decode Bitmap
+                    //   Bitmap bitmap = BitmapFactory.decodeStream(input);
 
 
+                    Article article = new Article(imgSrc, title.html(), category.html(), info.select("p").text(), null,link);
+                    articleList.add(article);
+                    aAdapter.notifyDataSetChanged();
 
-               Article article = new Article(bitmap, title.html(), "Recent", info.select("p").html(), "5 hours ago");
-               articleList.add(article);
-               aAdapter.notifyDataSetChanged();
 
             }
 
