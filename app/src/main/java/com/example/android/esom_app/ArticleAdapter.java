@@ -1,24 +1,18 @@
 package com.example.android.esom_app;
 
+import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.RequiresPermission;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.view.View.OnClickListener;
 import android.widget.TextView;
-import android.app.Activity;
-import android.content.Context;
 
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
-import java.util.StringTokenizer;
-
-import static android.R.attr.button;
-import static java.security.AccessController.getContext;
 
 /**
  * Created by MAHE on 9/23/2017.
@@ -43,7 +37,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
             title = (TextView) view.findViewById(R.id.title);
             category = (TextView) view.findViewById(R.id.category);
             info = (TextView) view.findViewById(R.id.info);
-            date = (TextView) view.findViewById(R.id.date);
+        //    date = (TextView) view.findViewById(R.id.date);
             link = "";
             ReadMore = (TextView) view.findViewById(R.id.ReadMore);
 
@@ -70,7 +64,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.MyViewHo
         Picasso.with(holder.picture.getContext()).load(article.getPic()).into(holder.picture);
         holder.category.setText(article.getCategory());
         holder.info.setText(article.getInfo());
-        holder.date.setText(article.getDate());
+//        holder.date.setText(article.getDate());
         holder.link= article.getLink();
         holder.ReadMore.setOnClickListener(new OnClickListener() {
 
